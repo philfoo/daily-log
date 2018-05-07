@@ -1,35 +1,45 @@
 import re
 import consts as consts
+import os.path
 
-# TODO:Check whether stuff has been set up first (the actual daily log)
+import reader as reader
+def main():
+    # Check whether stuff has been set up already
+    if (not os.path.exists(consts.DIR_LOC)):
+        print consts.SETUP_LOG_TEXT
 
+        os.makedirs(consts.DIR_LOC)
 
-while (True):
-    user_input= raw_input(consts.COMMAND_TEXT)
-    user_input_array = user_input.split()
+    while (True):
+        user_input= raw_input(consts.COMMAND_TEXT)
+        user_input_array = user_input.split()
 
-    if (len(user_input_array) > 0):
-        command = user_input_array[0].lower()
+        if (len(user_input_array) > 0):
+            command = user_input_array[0].lower()
 
-        if (command in consts.HELP):
-            print consts.HELP_MESSAGE
+            if (command in consts.HELP):
+                print consts.HELP_MESSAGE
 
-        if (command in consts.WRITE):
-            print "Writing"
+            elif (command in consts.WRITE):
+                print "Writing"
 
-        if (command in consts.FIND):
-            print "Finding"
+            elif (command in consts.READ):
+                reader.run(user_input_array)
 
-        if (command in consts.SEARCH):
-            print "Searching"
+            elif (command in consts.SEARCH):
+                print "Searching"
 
-        if (command in consts.DELETE):
-            print "Deleting"
+            elif (command in consts.DELETE):
+                print "Deleting"
 
-        if (command in consts.EDIT):
-            print "Editing"
+            elif (command in consts.EDIT):
+                print "Editing"
 
-        if (command in consts.QUIT):
-            break
+            elif (command in consts.QUIT):
+                break
 
+            else:
+                print consts.UNRECOGNIZED_COMMAND_TEXT
 
+if __name__ == '__main__':
+    main()
