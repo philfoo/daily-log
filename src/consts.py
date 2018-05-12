@@ -24,6 +24,10 @@ SETUP_LOG_TEXT = """Hi! This appears to be your first time using this program.
 We will set up your log directory. If this is not your first time using the program
 and you already should have a log directory, ask Phil for help."""
 
+DATE_SEPARATOR = "-------------------------------------\n"
+
+# Mappings/Data
+DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
 
 

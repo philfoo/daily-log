@@ -1,3 +1,4 @@
+import os.path
 from datetime import datetime, timedelta
 import consts
 
@@ -34,8 +35,7 @@ def find_necessary_dates(date, days_after):
         necessary_dates.append(date)
         days_counted += 1
 
-    print convert_dates_to_filenames(necessary_dates)
-    return necessary_dates
+    print read_and_build_entries(convert_dates_to_filenames(necessary_dates))
 
 # Takes an array of datetime objects and returns a string
 # in format 'MMDDYYYY.txt''
@@ -46,4 +46,27 @@ def convert_dates_to_filenames(dates_array):
         file_names.append(file_name)
 
     return file_names
+
+# Take an array of files names in MMDDYYYY.txt format
+# Returns a string that contains the contents of all files,
+# if they exist
+def read_and_build_entries(file_names):
+    compiled_files = ""
+    for file in file_names:
+        file_path = consts.DIR_LOC + file
+        if (os.path.exists(file_path)):
+            date = file[:-4]
+            date = datetime.strptime(date, '%m%d%Y')
+
+            day_of_week = consts.DAYS[date.weekday()]
+            date_string = day_of_week + ", " + str(date.strftime('%m-%d-%Y'))
+
+            compiled_files += ('\n' + date_string  + '\n')
+            compiled_files += consts.DATE_SEPARATOR
+
+            file_object = open(file_path, 'r')
+            compiled_files += file_object.read()
+            file_object.close()
+
+    return compiled_files
 
