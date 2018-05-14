@@ -3,6 +3,8 @@ import consts as consts
 import os.path
 
 import reader as reader
+import writer as writer
+
 def main():
     # Check whether stuff has been set up already
     if (not os.path.exists(consts.DIR_LOC)):
@@ -21,7 +23,7 @@ def main():
                 print consts.HELP_MESSAGE
 
             elif (command in consts.WRITE):
-                print "Writing"
+                writer.run(user_input_array)
 
             elif (command in consts.READ):
                 reader.run(user_input_array)

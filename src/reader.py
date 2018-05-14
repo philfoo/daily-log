@@ -8,12 +8,15 @@ def run(input_arr):
         print consts.MISSING_ARGUMENTS
         return
 
-    # TODO: Try for date formatted in MM/DD/YYYY, else try MM/DD/YY
-    try:
-        date = datetime.strptime(input_arr[1], '%m/%d/%Y')
-    except ValueError as val_error:
-        print val_error
-        return
+    if (input_arr[1].lower() == "today"):
+        date =  datetime.now()
+    else:
+        # TODO: Try for date formatted in MM/DD/YYYY, else try MM/DD/YY
+        try:
+            date = datetime.strptime(input_arr[1], '%m/%d/%Y')
+        except ValueError as val_error:
+            print val_error
+            return
 
     if (len(input_arr) == 2):
         days_after = 0
