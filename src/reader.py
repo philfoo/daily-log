@@ -16,10 +16,18 @@ def run(input_arr):
         return
 
     if (len(input_arr) == 2):
-        find_necessary_dates(date, 0)
+        days_after = 0
     else:
         days_after = int(input_arr[2])
-        find_necessary_dates(date, days_after)
+
+    necessary_dates = find_necessary_dates(date, days_after)
+    file_names = convert_dates_to_filenames(necessary_dates)
+    entries = read_and_build_entries(file_names)
+
+    if (len(entries) == 0):
+        print consts.NO_LOGS_TEXT
+    else:
+        print entries
 
 # Takes a datetime object, and X number of days
 # Returns an array with the initial date and the
@@ -35,7 +43,7 @@ def find_necessary_dates(date, days_after):
         necessary_dates.append(date)
         days_counted += 1
 
-    print read_and_build_entries(convert_dates_to_filenames(necessary_dates))
+    return necessary_dates
 
 # Takes an array of datetime objects and returns a string
 # in format 'MMDDYYYY.txt''
