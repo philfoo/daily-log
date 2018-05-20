@@ -20,6 +20,7 @@ COMMAND_TEXT = "Please enter a command: "
 UNRECOGNIZED_COMMAND_TEXT = "Unrecognized command."
 MISSING_ARGUMENTS = "Not enough arguments needed for command."
 NO_LOGS_TEXT = "No entries found for this date range."
+NO_CONTENT_TEXT = "No content written, file not saved."
 
 SETUP_LOG_TEXT = """Hi! This appears to be your first time using this program.
 We will set up your log directory. If this is not your first time using the program

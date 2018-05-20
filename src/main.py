@@ -35,7 +35,7 @@ def main():
                 print "Deleting"
 
             elif (command in consts.EDIT):
-                print "Editing"
+                writer.run(user_input_array)
 
             elif (command in consts.QUIT):
                 break
