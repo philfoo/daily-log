@@ -4,6 +4,7 @@ import os.path
 
 import reader as reader
 import writer as writer
+import searcher as searcher
 
 def main():
     # Check whether stuff has been set up already
@@ -29,7 +30,7 @@ def main():
                 reader.run(user_input_array)
 
             elif (command in consts.SEARCH):
-                print "Searching"
+                searcher.run(user_input_array)
 
             elif (command in consts.DELETE):
                 print "Deleting"
